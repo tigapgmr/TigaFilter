@@ -1,9 +1,11 @@
 #ifndef TIGAFILTER_CONVOLUTION_MATRIX_HPP
 #define TIGAFILTER_CONVOLUTION_MATRIX_HPP
-#include "stdafx.h"
 #include <memory.h>
 #include <math.h>
 #include <assert.h>
+#include "opencv2\core\core.hpp"
+#include "opencv2\imgproc\imgproc.hpp"
+#include "opencv2\opencv.hpp"
 //For Easing of any functions using Convolutions We made 'ConvolutionMatrix' Class.
 class ConvolutionMatrix {
 public:
@@ -46,12 +48,6 @@ private:
 */
 cv::Mat computeConvolution3x3(cv::Mat input, ConvolutionMatrix matrix);
 
-
-/*Created by Tiga
-* @brief : sature_cast pixel values.
-*
-* @param input : casting value.
-*/
 int clipping(int value);
-
+void ConvertImageType(cv::Mat src, cv::Mat& dst);
 #endif //TIGAFILTER_CONVOLUTION_MATRIX_HPP

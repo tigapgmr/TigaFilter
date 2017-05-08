@@ -1,18 +1,18 @@
+
 #include "ConvolutionMatrix.hpp"
 using namespace cv;
-
 int clipping(int value)
 {
-	return (value > 255 ? 255 : (value < 0 ? 0 : value));
+	return value > 255 ? 255 : (value < 0 ? 0 : value);
 }
-
-
-
+void ConvertImageType(Mat src, Mat& dst)
+{
+	cvtColor(src, dst, CV_GRAY2RGB);
+}
 Mat computeConvolution3x3(Mat input, ConvolutionMatrix matrix) {
 	int width = input.cols;
 	int height = input.rows;
-
-	Mat result = input.clone();
+	Mat result = result = input.clone();
 	int sumR, sumG, sumB;
 	Vec3b pixels[3][3];
 	for (int y = 0; y < height - 2; ++y) {
